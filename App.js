@@ -1,5 +1,13 @@
 import React from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import {
+  KeyboardAvoidingView,
+  Platform,
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
+} from 'react-native'
 import Task from './components/Task'
 
 export default function App() {
@@ -15,6 +23,20 @@ export default function App() {
           <Task text={'Task 2'} />
         </View>
       </View>
+
+      {/* Write a task */}
+      <KeyboardAvoidingView
+        behavoir={Platform.OS === 'android' ? 'padding' : 'height'}
+        style={styles.writeTaskWrapper}
+      >
+        <TextInput style={styles.input} placeholder={'Write a task'} />
+
+        <TouchableOpacity>
+          <View stle={styles.addWrapper}>
+            <Text style={styles.addText}>+</Text>
+          </View>
+        </TouchableOpacity>
+      </KeyboardAvoidingView>
     </View>
   )
 }
@@ -35,4 +57,8 @@ const styles = StyleSheet.create({
   items: {
     marginTop: 30,
   },
+  writeTaskWrapper: {},
+  input: {},
+  addWrapper: {},
+  addText: {},
 })
